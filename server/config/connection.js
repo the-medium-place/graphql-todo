@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/graphql-todo',
+  process.env.MONGODB_URI || 'mongodb://localhost/gql-todo',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
