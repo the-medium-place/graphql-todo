@@ -38,3 +38,18 @@ export const CREATE_TODO = gql`
     }
   }
 `;
+
+export const DELETE_TODO = gql`
+  mutation deleteTodo($todoId: ID!) {
+    deleteTodo(todoId: $todoId) {
+      _id
+      name
+      todos {
+        _id
+        title
+        content
+        dueDate
+      }
+    }
+  }
+`

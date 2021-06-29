@@ -37,7 +37,7 @@ const resolvers = {
       // console.log(context)
       if (context.user) {
         const loggedInUser = await User.findOne({ _id: context.user._id }).populate('todos');
-        console.log(loggedInUser)
+        // console.log(loggedInUser)
         return loggedInUser;
       }
       throw new AuthenticationError('You need to be logged in!');
@@ -48,7 +48,7 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, { name, password }) => {
       const newUser = await User.create({ name, password });
-      console.log('resolvers.js newUser: ', newUser)
+      // console.log('resolvers.js newUser: ', newUser)
       const token = signToken(newUser);
       return { token, newUser };
     },
@@ -116,7 +116,7 @@ const resolvers = {
     // removeUser: async (parent, { userId }) => {
     //   return User.findOneAndDelete({ _id: userId });
     // },
-    removeTodo: async (parent, { todoId }, context) => {
+    deleteTodo: async (parent, { todoId }, context) => {
       if (context.user) {
         Todo.findByIdAndDelete(todoId)
 

@@ -14,7 +14,12 @@ export default function MainPage() {
         <div className="MainPage">
             {loading ? <h1>loading...</h1> : error ? <h1>error!</h1> :
                 (<div>
-                    {data.allUsers.map(user => (
+                    <h1>Welcome to GraphQL TODO'S!</h1>
+                    <br />
+                    <h4>please <Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link> to view todos </h4>
+
+
+                    {/* {data.allUsers.map(user => (
                         <div key={user._id}>
                             <p><Link to={`/users/${user._id}`}>{user.name}</Link> - <em>{user._id}</em></p>
                             <ul>
@@ -24,7 +29,7 @@ export default function MainPage() {
                             </ul>
 
                         </div>
-                    ))}
+                    ))} */}
                 </div>)
             }
         </div>

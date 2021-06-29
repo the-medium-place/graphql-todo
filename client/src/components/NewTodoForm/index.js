@@ -46,14 +46,23 @@ export default function NewTodoForm() {
 
 
     return (
-        <div className="NewTodoForm">
-            <form onSubmit={formSubmit}>
-                <input onChange={handleInput} name="title" value={todoFormState.title} />
-                <textarea onChange={handleInput} name="content" value={todoFormState.content} />
-                <input onChange={handleInput} type="date" name="dueDate" value={todoFormState.date} />
-                <button type="submit">Submit</button>
+        <div className="NewTodoForm" style={{ width: "100%", display: 'flex', justifyContent: 'center' }}>
+            <h2>{data ? 'data retrieved!' : error ? 'Could not retrieve todo items, please log in again' : ''}</h2>
+            <form onSubmit={formSubmit} style={{ display: 'flex', flexDirection: 'column', width: '35%', background: 'lightGrey', borderRadius: '5px', padding: '.5em' }}>
+                <h4>Create a New Todo!</h4>
+                <p style={{ color: 'red', marginTop: '-1em' }}>*<span style={{ fontSize: ".6em" }}> - Required</span></p>
+                <label htmlFor="title">Title<span style={{ color: 'red' }}>*</span></label>
+                <input onChange={handleInput} id="titile" name="title" value={todoFormState.title} required />
+
+                <label htmlFor="content">Content<span style={{ color: 'red' }}>*</span></label>
+                <textarea onChange={handleInput} rows="6" id="content" name="content" value={todoFormState.content} required />
+
+                <label htmlFor="dueDate">Due Date</label>
+                <input onChange={handleInput} id="dueDate" type="date" name="dueDate" value={todoFormState.date} />
+
+                <button type="submit" style={{ width: "33%", margin: '5px auto' }}>Submit</button>
             </form>
-            <h2>{data ? 'data retrieved!' : error ? 'there was an error...' : ''}</h2>
+
         </div>
     )
 }

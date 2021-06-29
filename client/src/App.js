@@ -3,6 +3,8 @@ import MainPage from './pages/MainPage';
 import UserPage from './pages/UserPage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 
@@ -34,7 +36,8 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className="App">
+      <Header />
+      <div className="App" style={{ minHeight: '90vh' }}>
         <Router>
           <Switch>
 
@@ -57,6 +60,7 @@ function App() {
           </Switch>
         </Router>
       </div>
+      <Footer />
     </ApolloProvider>
   );
 }
