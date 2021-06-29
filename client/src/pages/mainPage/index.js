@@ -1,19 +1,18 @@
 import React from 'react'
 import { useQuery } from '@apollo/client';
-import { queries } from '../../utils/queries';
+import { GET_ALL_USERS } from '../../utils/queries';
 import { Link } from 'react-router-dom'
 
 
 export default function MainPage() {
 
-
-    const { loading, data } = useQuery(queries.QUERY_GET_ALL_USERS);
+    const { loading, error, data } = useQuery(GET_ALL_USERS);
     // const allUsers = data?.allUsers || [];
-    // console.log(data)
+    if (error) { console.log(error) }
 
     return (
-        <div>
-            {loading ? <h1>loading...</h1> :
+        <div className="MainPage">
+            {loading ? <h1>loading...</h1> : error ? <h1>error!</h1> :
                 (<div>
                     {data.allUsers.map(user => (
                         <div key={user._id}>
